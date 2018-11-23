@@ -1,8 +1,13 @@
 import React, {Component} from 'react';
 import {Text, View} from 'react-native';
-// import styles from './styles'
+import { connect } from 'react-redux';
+import styles from './styles'
 
-export default class Home extends Component {
+class Home extends Component {
+  constructor(props) {
+    super(props)
+  }
+
   render() {
     return (
       <View >
@@ -11,3 +16,10 @@ export default class Home extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  const { showcase } = state
+  return { showcase }
+};
+
+export default connect(mapStateToProps)(Home);
