@@ -35,7 +35,7 @@ class Home extends Component {
             <View>
                 <StatusBar
                     backgroundColor="rgba(0,0,0,0)"
-                    barStyle="light-content"
+                    barStyle="dark-content"
                     translucent={true}
                 />
 

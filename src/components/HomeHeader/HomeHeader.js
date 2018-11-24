@@ -15,9 +15,12 @@ class HomeHeader extends Component {
                         source={{ uri: this.props.app.header }}
                         style={styles.background}
                     >
-                        <Text>{this.props.place}</Text>
+                        <Image
+                            source={{ uri: this.props.app.logo }}
+                            style={styles.logo}
+                        />
+                        <Text>INPUT</Text>
                     </ImageBackground>
-                    {/* <Image /> */}
                 </View>
             </View>
         )
