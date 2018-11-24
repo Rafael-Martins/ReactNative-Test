@@ -1,6 +1,4 @@
-export const setInit = initObj => (
-  {
+export const setInit = initObj => ({
     type: 'SET_INIT',
     payload: initObj,
-  }
-);
+})

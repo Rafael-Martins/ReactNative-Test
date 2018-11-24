@@ -1,2 +1,2 @@
-import HomeHeader from './HomeHeader';
-export default HomeHeader;
+import HomeHeader from './HomeHeader'
+export default HomeHeader
