@@ -45,7 +45,7 @@ module.exports = projectPath => {
           },
           {
             type: 'add',
-            path: `${basePath}/style.js`,
+            path: `${basePath}/styles.js`,
             templateFile: `${cwd}/generators/FunctionalComponent/styles.js.hbs`,
             abortOnFail: true
           },
