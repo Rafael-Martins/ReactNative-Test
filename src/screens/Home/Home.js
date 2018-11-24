@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
-import { connect } from 'react-redux';
+import {Text, View, StatusBar} from 'react-native';
+import {connect} from 'react-redux';
 import styles from './styles'
 import {INIT_REQUEST} from '../../services/http'
-import { bindActionCreators } from 'redux';
-import { setInit } from '../../actions/showcaseActions';
+import {bindActionCreators} from 'redux';
+import {setInit} from '../../actions/showcaseActions';
+import HomeHeader from '../../components/HomeHeader'
 
 
 class Home extends Component {
@@ -14,15 +15,34 @@ class Home extends Component {
 
   componentDidMount() {
     INIT_REQUEST().then((response) => {
+      console.log(response.data.app.logo)
       this.props.setInit(response.data)
     })
   }
 
   render() {
+    const BodyRender = () => (
+      <View>
+        <HomeHeader
+          place={this.props.showcase.initObj.name} 
+          app={this.props.showcase.initObj.app}/>
+      </View> 
+    )
+  
+    const LoaderRender = () => (
+      <View></View>
+    )
+
+  
     return (
       <View >
-        <Text>Welcome to React Native!</Text>
-        <Text>{this.props.showcase.initObj.name}</Text>
+        <StatusBar
+          backgroundColor="rgba(0,0,0,0)"
+          barStyle="light-content"
+          translucent={true}
+        />
+
+        {this.props.showcase.initIsLoaded ? <BodyRender /> : <LoaderRender />}
       </View>
     );
   }
