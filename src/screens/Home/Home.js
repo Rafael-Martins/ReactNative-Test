@@ -14,7 +14,6 @@ class Home extends Component {
 
     componentDidMount() {
         INIT_REQUEST().then(response => {
-            console.log(response.data.app.logo)
             this.props.setInit(response.data)
         })
     }

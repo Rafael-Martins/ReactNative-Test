@@ -1,7 +1,17 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-    container: {
-      flex: 1,
+    input: {
+        borderColor: 'rgba(20,20,20,0.2)',
+        borderWidth: 1,
+        borderRadius: 10,
+        minWidth: 270,
+        padding: 10,
     },
-  });  
+    place: {
+        fontWeight: 'bold',
+    },
+    mainText: {
+        // marginRight: 20,
+    },
+})

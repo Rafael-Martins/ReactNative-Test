@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Text, View, Image, ImageBackground } from 'react-native'
 import styles from './styles'
+import PropTypes from 'prop-types'
+import MainInput from '../MainInput'
 
 class HomeHeader extends Component {
     constructor(props) {
@@ -19,12 +21,17 @@ class HomeHeader extends Component {
                             source={{ uri: this.props.app.logo }}
                             style={styles.logo}
                         />
-                        <Text>INPUT</Text>
+                        <MainInput place={this.props.place} />
                     </ImageBackground>
                 </View>
             </View>
         )
     }
+}
+
+HomeHeader.propTypes = {
+    app: PropTypes.object,
+    place: PropTypes.string,
 }
 
 export default HomeHeader
