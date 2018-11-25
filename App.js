@@ -8,11 +8,11 @@ import Navigation from './src/navigation'
 const store = createStore(showcaseReducer)
 
 export default class App extends Component {
-    render() {
-        return (
-            <Provider store={store}>
-                <Navigation />
-            </Provider>
-        )
-    }
+  render() {
+    return (
+      <Provider store={store}>
+        <Navigation />
+      </Provider>
+    )
+  }
 }

@@ -1,2 +1,2 @@
-import MainInput from './MainInput';
-export default MainInput;
+import MainInput from './MainInput'
+export default MainInput

@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {Text, View} from 'react-native';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { Text, View } from 'react-native'
+import PropTypes from 'prop-types'
 import styles from './styles'
 
 class {{ pascalCase name }} extends Component {
@@ -9,16 +9,10 @@ class {{ pascalCase name }} extends Component {
   }
 
   render() {
-    return (
-      <View>
-      </View>
-    );
+    return <View />
   }
 }
 
-const mapStateToProps = (state) => {
-  const { showcase } = state
-  return { showcase }
-};
+{{ pascalCase name }}.propTypes = {}
 
-export default connect(mapStateToProps)({{ pascalCase name }});
+export default {{ pascalCase name }}
