@@ -6,9 +6,15 @@ const cartReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'ADD_ITEM':
       const itemsOnCart = { ...state.itemsOnCart }
-      const { id } = action.payload
+      const { id, name, price } = action.payload
 
-      itemsOnCart[id] = itemsOnCart[id] ? itemsOnCart[id] + 1 : 1
+      if (itemsOnCart[id]) {
+        itemsOnCart[id].qty += 1
+      }
+
+      if (!itemsOnCart[id]) {
+        itemsOnCart[id] = { name, price, qty: 1 }
+      }
 
       return { itemsOnCart }
     default:
