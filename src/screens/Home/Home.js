@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { Text, View, StatusBar } from 'react-native'
+import { Text, View, StatusBar, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import styles from './styles'
 import { INIT_REQUEST } from '../../services/http'
 import { bindActionCreators } from 'redux'
 import { setInit } from '../../actions/showcaseActions'
 import HomeHeader from '../../components/HomeHeader'
-import PromotionCarousel from '../../components/PromotionCarousel'
+import TitleCarousel from '../../components/TitleCarousel'
 
 class Home extends Component {
   constructor(props) {
@@ -20,22 +20,54 @@ class Home extends Component {
     })
   }
 
+  goToProducts = productsSelected => {
+    return () => {
+      console.log(productsSelected)
+      console.log(this.props.navigation)
+      this.props.navigation.push('Products', {
+        productsSelected,
+      })
+    }
+  }
+
   render() {
     const BodyRender = () => (
       <View>
-        <HomeHeader
-          place={this.props.showcase.initObj.name}
-          app={this.props.showcase.initObj.app}
-        />
+        <View style={styles.homeHeaderContainer}>
+          <HomeHeader
+            place={this.props.showcase.initObj.name}
+            app={this.props.showcase.initObj.app}
+          />
+        </View>
 
-        <PromotionCarousel />
+        <View style={styles.titleCarouselContainer}>
+          <TitleCarousel
+            onItemPress={this.goToProducts}
+            titles={this.props.showcase.initObj.titles[2]}
+            isPromotion={true}
+          />
+        </View>
+
+        <View style={styles.titleCarouselContainer}>
+          <TitleCarousel
+            onItemPress={this.goToProducts}
+            titles={this.props.showcase.initObj.titles[0]}
+          />
+        </View>
+
+        <View style={styles.titleCarouselContainer}>
+          <TitleCarousel
+            onItemPress={this.goToProducts}
+            titles={this.props.showcase.initObj.titles[1]}
+          />
+        </View>
       </View>
     )
 
     const LoaderRender = () => <View />
 
     return (
-      <View>
+      <ScrollView>
         <StatusBar
           backgroundColor="rgba(0,0,0,0)"
           barStyle="dark-content"
@@ -43,7 +75,7 @@ class Home extends Component {
         />
 
         {this.props.showcase.initIsLoaded ? <BodyRender /> : <LoaderRender />}
-      </View>
+      </ScrollView>
     )
   }
 }
