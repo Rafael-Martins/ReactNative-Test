@@ -10,7 +10,10 @@ class BuyButtom extends Component {
 
   render() {
     return (
-      <TouchableHighlight style={styles.mainContainer}>
+      <TouchableHighlight
+        style={styles.mainContainer}
+        onPress={this.props.onPress}
+      >
         <View style={styles.buyNewContainer}>
           <Text>Comprar</Text>
         </View>
@@ -19,6 +22,8 @@ class BuyButtom extends Component {
   }
 }
 
-BuyButtom.propTypes = {}
+BuyButtom.propTypes = {
+  onPress: PropTypes.func.isRequired,
+}
 
 export default BuyButtom

@@ -30,7 +30,12 @@ class ProductItem extends Component {
             </Text>
           </View>
 
-          <BuyButtom style={styles.buyButtom} />
+          <BuyButtom
+            style={styles.buyButtom}
+            onPress={() => {
+              this.props.buyPress(this.props.item)
+            }}
+          />
         </View>
       </View>
     )
@@ -39,6 +44,7 @@ class ProductItem extends Component {
 
 ProductItem.propTypes = {
   item: PropTypes.object.isRequired,
+  buyPress: PropTypes.func.isRequired,
 }
 
 export default ProductItem

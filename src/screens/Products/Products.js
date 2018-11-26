@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Text, ScrollView, StatusBar } from 'react-native'
 import styles from './styles'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { addItem } from '../../actions/cartActions'
 import { GET_PRODUCTS } from '../../services/http'
 import ProductItem from '../../components/ProductItem'
 
@@ -18,8 +21,11 @@ class Products extends Component {
       .key_words
     GET_PRODUCTS(keyWords, 1).then(response => {
       this.setState({ productsArray: response.data.items })
-      console.log(response.data.items)
     })
+  }
+
+  buyPress = item => {
+    this.props.addItem(item)
   }
 
   render() {
@@ -32,11 +38,29 @@ class Products extends Component {
         />
 
         {this.state.productsArray.map((item, index) => {
-          return <ProductItem key={index} item={item} />
+          return (
+            <ProductItem key={index} item={item} buyPress={this.buyPress} />
+          )
         })}
       </ScrollView>
     )
   }
 }
 
-export default Products
+const mapStateToProps = state => {
+  const { cart } = state
+  return { cart }
+}
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      addItem,
+    },
+    dispatch
+  )
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Products)

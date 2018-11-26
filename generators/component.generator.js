@@ -34,19 +34,19 @@ module.exports = projectPath => {
         {
           type: 'add',
           path: `${basePath}/index.js`,
-          templateFile: `${cwd}/generators/FunctionalComponent/index.js.hbs`,
+          templateFile: `${cwd}/generators/Component/index.js.hbs`,
           abortOnFail: true,
         },
         {
           type: 'add',
           path: `${basePath}/\{{ pascalCase name }}.js`,
-          templateFile: `${cwd}/generators/FunctionalComponent/Component.js.hbs`,
+          templateFile: `${cwd}/generators/Component/Component.js.hbs`,
           abortOnFail: true,
         },
         {
           type: 'add',
           path: `${basePath}/styles.js`,
-          templateFile: `${cwd}/generators/FunctionalComponent/styles.js.hbs`,
+          templateFile: `${cwd}/generators/Component/styles.js.hbs`,
           abortOnFail: true,
         },
       ],

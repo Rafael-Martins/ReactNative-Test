@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux'
-
 const INITIAL_STATE = {
   initIsLoaded: false,
   initObj: {},
@@ -8,8 +6,6 @@ const INITIAL_STATE = {
 const showcaseReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'SET_INIT':
-      const { initIsLoaded, initObj } = state
-
       const newState = { initIsLoaded: true, initObj: action.payload }
       return newState
     default:
@@ -17,6 +13,4 @@ const showcaseReducer = (state = INITIAL_STATE, action) => {
   }
 }
 
-export default combineReducers({
-  showcase: showcaseReducer,
-})
+export default showcaseReducer

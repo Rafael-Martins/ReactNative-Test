@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Text, View, StatusBar, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
-import styles from './styles'
-import { INIT_REQUEST } from '../../services/http'
 import { bindActionCreators } from 'redux'
 import { setInit } from '../../actions/showcaseActions'
+import styles from './styles'
+import { INIT_REQUEST } from '../../services/http'
 import HomeHeader from '../../components/HomeHeader'
 import TitleCarousel from '../../components/TitleCarousel'
 
@@ -16,14 +16,11 @@ class Home extends Component {
   componentDidMount() {
     INIT_REQUEST().then(response => {
       this.props.setInit(response.data)
-      console.log(response.data.titles[2])
     })
   }
 
   goToProducts = productsSelected => {
     return () => {
-      console.log(productsSelected)
-      console.log(this.props.navigation)
       this.props.navigation.push('Products', {
         productsSelected,
       })
